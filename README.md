@@ -1,7 +1,7 @@
 # python voice assistant app
 
 
-Clone and compile:
+Installation:
 ```sh
 git clone https://github.com/EllaJChoi/shiri.git
 cd shiri
