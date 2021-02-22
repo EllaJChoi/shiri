@@ -61,39 +61,47 @@ def speak(audio_string):
 
 
 def respond(voice_data):
+    # name
     if "what is your name" in voice_data:
         speak("My name is Shiri.")
+    # name (k ver)
     if u"이름이 뭐" in voice_data:
         speak("제 이름은 쉬리입니다.")
+    # time
     if "what time is it" in voice_data:
         now = datetime.now()
         current_time = now.strftime("%H:%M")
         speak("It is " + current_time)
+    # time (k ver)
     if u"몇 시" in voice_data:
         now = datetime.now()
         current_time = now.strftime("%H시 %M분")
         speak(current_time + "입니다.")
+    # search
     if "search" in voice_data:
         search = record_audio("What do you want to search for?")
         speak("Here is what I found for " + search + ".")
         url = "https://google.com/search?q=" + search
         webbrowser.get().open(url)
+    # search (k ver)
     if u"검색" in voice_data:
         search = record_audio("무엇을 검색해드릴까요?")
         speak(search + "에 대한 검색 결과입니다.")
         url = "https://google.com/search?q=" + search
         webbrowser.get().open(url)
+    # location
     if "find location" in voice_data:
         location = record_audio("What is the location?")
         speak("Here is the location of " + location + ".")
         url = "https://google.ca/maps/place/" + location + "/&amp;"
         webbrowser.get().open(url)
+    # location (k ver)
     if u"위치" in voice_data:
         location = record_audio("What is the location?")
         speak(location + "의 위치입니다.")
         url = "https://google.ca/maps/place/" + location + "/&amp;"
         webbrowser.get().open(url)
-
+    # exit
     exit_str = ["exit", u"끝", u"꺼져"]
     for i in exit_str:
         if i in voice_data:
